@@ -9,7 +9,7 @@ import javax.persistence.EntityTransaction;
 import br.com.traveller.dao.Persisted;
 import br.com.traveller.exception.TransactionException;
 
-public class PersistedImpl<E, K> implements Persisted<E, K> {
+public abstract class PersistedImpl<E, K> implements Persisted<E, K> {
 
     private EntityManager manager;
     private Class<E> clazz;
