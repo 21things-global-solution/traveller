@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,9 +25,18 @@ public class Address {
     @Column(name = "ds_complemento", length = 50)
     private String complement;
 
+    @Id
+    @JoinColumn(name = "cd_hotel", nullable = false)
+    private Hotel hotel;
+
+    @Id
+    @JoinColumn(name = "cd_logradouro", nullable = false)
+    private Street street;
+
     @Override
     public String toString() {
-        return "Address [complement=" + complement + ", id=" + id + ", number=" + number + "]";
+        return "Address [complement=" + complement + ", hotel=" + hotel + ", id=" + id + ", number=" + number
+                + ", street=" + street + "]";
     }
 
     public Address() {
@@ -62,5 +72,20 @@ public class Address {
         this.complement = complement;
     }
 
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public Street getStreet() {
+        return street;
+    }
+
+    public void setStreet(Street street) {
+        this.street = street;
+    }
 
 }
