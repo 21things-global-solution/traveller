@@ -32,6 +32,12 @@ public class Address {
     public Address() {
     }
 
+    public Address(Long id, String number, String complement) {
+        this.id = id;
+        this.number = number;
+        this.complement = complement;
+    }
+
     public Long getId() {
         return id;
     }
