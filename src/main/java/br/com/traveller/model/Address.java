@@ -42,10 +42,12 @@ public class Address {
     public Address() {
     }
 
-    public Address(Long id, String number, String complement) {
+    public Address(Long id, String number, String complement, Hotel hotel, Street street) {
         this.id = id;
         this.number = number;
         this.complement = complement;
+        this.hotel = hotel;
+        this.street = street;
     }
 
     public Long getId() {
