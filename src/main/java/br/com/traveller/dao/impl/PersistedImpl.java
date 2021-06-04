@@ -3,6 +3,7 @@ package br.com.traveller.dao.impl;
 import java.lang.reflect.ParameterizedType;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.EntityTransaction;
 
 import br.com.traveller.dao.Persisted;
@@ -35,8 +36,12 @@ public class PersistedImpl<E, K> implements Persisted<E, K> {
     }
 
     @Override
-    public void delete(K id) {
+    public void delete(K id) throws EntityNotFoundException {
         E entity = findById(id);
+
+        if (entity == null) {
+            throw new EntityNotFoundException("Data not found for key: " + id);
+        }
 
         manager.remove(entity);
     }

@@ -1,5 +1,7 @@
 package br.com.traveller.dao;
 
+import javax.persistence.EntityNotFoundException;
+
 import br.com.traveller.exception.TransactionException;
 
 public interface Persisted<E, K> {
@@ -30,8 +32,10 @@ public interface Persisted<E, K> {
      * Destroy entity data by key
      * 
      * @param id Search key
+     * 
+     * @throws EntityNotFoundException if entity data not found
      */
-    void delete(K id);
+    void delete(K id) throws EntityNotFoundException;
 
     /**
      * Commit transaction
