@@ -1,5 +1,7 @@
 package br.com.traveller.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
 
 import br.com.traveller.exception.TransactionException;
@@ -44,4 +46,11 @@ public interface Persisted<E, K> {
      *                              show the given exception
      */
     void commit() throws TransactionException;
+
+    /**
+     * Find all entity instances data
+     * 
+     * @return List<E> all instances
+     */
+    List<E> findAll();
 }

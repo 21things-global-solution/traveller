@@ -1,6 +1,7 @@
 package br.com.traveller.dao.impl;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
@@ -59,5 +60,10 @@ public abstract class PersistedImpl<E, K> implements Persisted<E, K> {
             }
             throw new TransactionException(e.getMessage());
         }
+    }
+
+    @Override
+    public List<E> findAll() {
+        return manager.createQuery("from " + clazz.getName(), clazz).getResultList();
     }
 }
