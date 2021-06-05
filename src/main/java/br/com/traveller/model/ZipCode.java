@@ -1,5 +1,9 @@
 package br.com.traveller.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -36,16 +41,29 @@ public class ZipCode {
     @Column(name = "in_uf", nullable = false, length = 2)
     private State state;
 
+    @OneToMany(mappedBy = "zipCode", cascade = CascadeType.ALL)
+    private List<Address> addresses;
+
+    public void addAddress(Address address) {
+        if (this.addresses == null) {
+            this.addresses = new ArrayList<>();
+        }
+        this.addresses.add(address);
+        address.setZipCode(this);
+    }
+
     public ZipCode() {
     }
 
-    public ZipCode(Long id, String number, String name, String district, String city, State state) {
+    public ZipCode(Long id, String number, String name, String district, String city, State state,
+            List<Address> addresses) {
         this.id = id;
         this.number = number;
         this.name = name;
         this.district = district;
         this.city = city;
         this.state = state;
+        this.addresses = addresses;
     }
 
     public Long getId() {
@@ -94,6 +112,14 @@ public class ZipCode {
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 
 }
