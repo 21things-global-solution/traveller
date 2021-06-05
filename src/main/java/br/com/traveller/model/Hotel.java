@@ -21,21 +21,29 @@ public class Hotel {
     @Column(name = "nm_hotel", length = 90, nullable = false)
     private String name;
 
-    @Column(name = "nr_tel", length = 11)
+    @Column(name = "nr_telefone", length = 11)
     private String phone;
+
+    @Column(name = "ds_email", nullable = false)
+    private String mail;
+
+    @Column(name = "ds_site", length = 150)
+    private String site;
 
     @Override
     public String toString() {
-        return "Hotel [id=" + id + ", name=" + name + ", phone=" + phone + "]";
+        return "Hotel [id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone + ", site=" + site + "]";
     }
 
     public Hotel() {
     }
 
-    public Hotel(Long id, String name, String phone) {
+    public Hotel(Long id, String name, String phone, String mail, String site) {
         this.id = id;
         this.name = name;
         this.phone = phone;
+        this.mail = mail;
+        this.site = site;
     }
 
     public Long getId() {
@@ -60,6 +68,22 @@ public class Hotel {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getSite() {
+        return site;
+    }
+
+    public void setSite(String site) {
+        this.site = site;
     }
 
 }
