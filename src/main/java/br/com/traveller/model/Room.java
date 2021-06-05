@@ -53,6 +53,13 @@ public class Room {
         this.hotel = hotel;
     }
 
+    public Room(String description, RoomType type, BigDecimal value, Hotel hotel) {
+        this.description = description;
+        this.type = type;
+        this.value = value;
+        this.hotel = hotel;
+    }
+
     public Long getId() {
         return id;
     }
