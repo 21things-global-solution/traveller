@@ -55,6 +55,12 @@ public class Address {
         this.zipCode = zipCode;
     }
 
+    public Address(String number, ZipCode zipCode, Hotel hotel) {
+        this.number = number;
+        this.zipCode = zipCode;
+        this.hotel = hotel;
+    }
+
     public Long getId() {
         return id;
     }
