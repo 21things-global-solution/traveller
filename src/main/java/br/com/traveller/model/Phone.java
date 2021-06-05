@@ -1,5 +1,7 @@
 package br.com.traveller.model;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "T_GS_TELEFONE")
-@SequenceGenerator(name = "phone", allocationSize = 1, sequenceName = "SQ_GS_PHONE")
+@SequenceGenerator(name = "phone", allocationSize = 1, sequenceName = "SQ_GS_TELEFONE")
 public class Phone {
 
     @Id
@@ -28,9 +34,26 @@ public class Phone {
     @Column(name = "nr_telefone", length = 11, nullable = false)
     private String number;
 
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_cadastro", nullable = false, updatable = false)
+    private Calendar register;
+
     @Override
     public String toString() {
-        return "Phone [customer=" + customer + ", id=" + id + ", number=" + number + ", type=" + type + "]";
+        return "Phone [customer=" + customer + ", id=" + id + ", number=" + number + ", register=" + register
+                + ", type=" + type + "]";
+    }
+
+    public Phone(Long id, Customer customer, PhoneType type, String number, Calendar register) {
+        this.id = id;
+        this.customer = customer;
+        this.type = type;
+        this.number = number;
+        this.register = register;
+    }
+
+    public Phone() {
     }
 
     public Long getId() {
@@ -63,5 +86,13 @@ public class Phone {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public Calendar getRegister() {
+        return register;
+    }
+
+    public void setRegister(Calendar register) {
+        this.register = register;
     }
 }
