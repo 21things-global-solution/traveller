@@ -48,6 +48,12 @@ public class Phone {
                 + ", type=" + type + "]";
     }
 
+    public Phone(String number, PhoneType type, Customer customer) {
+        this.number = number;
+        this.type = type;
+        this.customer = customer;
+    }
+
     public Phone(Long id, Customer customer, PhoneType type, String number, Calendar register) {
         this.id = id;
         this.customer = customer;
