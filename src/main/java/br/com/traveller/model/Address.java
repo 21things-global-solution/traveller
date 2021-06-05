@@ -30,13 +30,11 @@ public class Address implements Serializable {
     @Column(name = "ds_complemento", length = 50)
     private String complement;
 
-    @Id
-    @JoinColumn(name = "cd_hotel", nullable = false)
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cd_hotel", nullable = false)
     private Hotel hotel;
 
-    @Id
-    @JoinColumn(name = "cd_logradouro", nullable = false)
+    @JoinColumn(name = "cd_cep", nullable = false)
     @ManyToOne(cascade = CascadeType.ALL)
     private ZipCode zipCode;
 
