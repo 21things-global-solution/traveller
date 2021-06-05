@@ -82,6 +82,13 @@ public class Hotel {
         this.address = address;
     }
 
+    public Hotel(String name, String phone, String site, String mail) {
+        this.name = name;
+        this.phone = phone;
+        this.site = site;
+        this.mail = mail;
+    }
+
     public Long getId() {
         return id;
     }
