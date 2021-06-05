@@ -6,6 +6,8 @@ import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +34,7 @@ public class Phone implements Serializable {
     @JoinColumn(name = "cd_cliente", nullable = false)
     private Customer customer;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tp_telefone", length = 9, nullable = false)
     private PhoneType type;
 
