@@ -2,12 +2,14 @@ package br.com.traveller.model;
 
 import java.util.Calendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,9 +30,11 @@ public class Reservation {
     @Column(name = "nr_dias", length = 3, nullable = false)
     private Integer days;
 
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cd_cliente", nullable = false)
     private Customer customer;
 
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cd_hotel", nullable = false)
     private Hotel hotel;
 
