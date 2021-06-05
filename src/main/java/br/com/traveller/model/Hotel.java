@@ -1,10 +1,15 @@
 package br.com.traveller.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,20 +35,33 @@ public class Hotel {
     @Column(name = "ds_site", length = 150)
     private String site;
 
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
+
+    public void addReservation(Reservation reservation) {
+        if (this.reservations == null) {
+            this.reservations = new ArrayList<>();
+        }
+        this.reservations.add(reservation);
+        reservation.setHotel(this);
+    }
+
     @Override
     public String toString() {
-        return "Hotel [id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone + ", site=" + site + "]";
+        return "Hotel [id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone + ", reservations="
+                + reservations + ", site=" + site + "]";
     }
 
     public Hotel() {
     }
 
-    public Hotel(Long id, String name, String phone, String mail, String site) {
+    public Hotel(Long id, String name, String phone, String mail, String site, List<Reservation> reservations) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.mail = mail;
         this.site = site;
+        this.reservations = reservations;
     }
 
     public Long getId() {
@@ -84,6 +102,14 @@ public class Hotel {
 
     public void setSite(String site) {
         this.site = site;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
 }
