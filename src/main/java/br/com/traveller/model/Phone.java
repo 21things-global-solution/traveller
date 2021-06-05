@@ -48,6 +48,11 @@ public class Phone {
                 + ", type=" + type + "]";
     }
 
+    public Phone(String number, PhoneType type) {
+        this.number = number;
+        this.type = type;
+    }
+
     public Phone(String number, PhoneType type, Customer customer) {
         this.number = number;
         this.type = type;
