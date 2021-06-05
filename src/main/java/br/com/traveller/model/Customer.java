@@ -45,6 +45,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Phone> phones;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
+
     public void addPhone(Phone phone) {
         if (this.phones == null) {
             this.phones = new ArrayList<>();
@@ -54,22 +57,33 @@ public class Customer {
         phone.setCustomer(this);
     }
 
+    public void addReservation(Reservation reservation) {
+        if (this.reservations == null) {
+            this.reservations = new ArrayList<>();
+        }
+
+        this.reservations.add(reservation);
+        reservation.setCustomer(this);
+    }
+
     @Override
     public String toString() {
         return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + ", phones=" + phones
-                + ", register=" + register + "]";
+                + ", register=" + register + ", reservations=" + reservations + "]";
     }
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, String mail, String nin, Calendar register, List<Phone> phones) {
+    public Customer(Long id, String name, String mail, String nin, Calendar register, List<Phone> phones,
+            List<Reservation> reservations) {
         this.id = id;
         this.name = name;
         this.mail = mail;
         this.nin = nin;
         this.register = register;
         this.phones = phones;
+        this.reservations = reservations;
     }
 
     public Long getId() {
@@ -118,5 +132,13 @@ public class Customer {
 
     public void setPhones(List<Phone> phones) {
         this.phones = phones;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }
