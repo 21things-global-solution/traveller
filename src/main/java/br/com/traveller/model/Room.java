@@ -30,7 +30,7 @@ public class Room implements Serializable {
     @Column(name = "tp_quarto", length = 30)
     private RoomType type;
 
-    @Column(name = "vl_quarto", length = 15, precision = 2)
+    @Column(name = "vl_quarto", length = 15)
     private BigDecimal value;
 
     @ManyToOne(cascade = CascadeType.ALL)
