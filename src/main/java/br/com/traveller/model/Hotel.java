@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -41,6 +42,9 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     private List<Room> rooms;
 
+    @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL)
+    private Address address;
+
     public void addRooms(Room room) {
         if (this.rooms == null) {
             this.rooms = new ArrayList<>();
@@ -59,15 +63,15 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel [id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone + ", reservations="
-                + reservations + ", rooms=" + rooms + ", site=" + site + "]";
+        return "Hotel [address=" + address + ", id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone
+                + ", reservations=" + reservations + ", rooms=" + rooms + ", site=" + site + "]";
     }
 
     public Hotel() {
     }
 
     public Hotel(Long id, String name, String phone, String mail, String site, List<Reservation> reservations,
-            List<Room> rooms) {
+            List<Room> rooms, Address address) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -75,6 +79,7 @@ public class Hotel {
         this.site = site;
         this.reservations = reservations;
         this.rooms = rooms;
+        this.address = address;
     }
 
     public Long getId() {
@@ -131,6 +136,14 @@ public class Hotel {
 
     public void setRooms(List<Room> rooms) {
         this.rooms = rooms;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 }
