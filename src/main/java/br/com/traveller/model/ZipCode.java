@@ -66,6 +66,14 @@ public class ZipCode {
         this.addresses = addresses;
     }
 
+    public ZipCode(String name, String district, String city, String number, State state) {
+        this.number = number;
+        this.name = name;
+        this.district = district;
+        this.city = city;
+        this.state = state;
+    }
+
     public Long getId() {
         return id;
     }
