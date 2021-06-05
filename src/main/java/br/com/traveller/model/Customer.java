@@ -1,12 +1,16 @@
 package br.com.traveller.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -38,20 +42,34 @@ public class Customer {
     @Column(name = "dt_cadastro", nullable = false, updatable = false)
     private Calendar register;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Phone> phones;
+
+    public void addPhone(Phone phone) {
+        if (this.phones == null) {
+            this.phones = new ArrayList<>();
+        }
+
+        this.phones.add(phone);
+        phone.setCustomer(this);
+    }
+
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + ", register=" + register
-                + "]";
+        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + ", phones=" + phones
+                + ", register=" + register + "]";
     }
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, String mail, String nin) {
+    public Customer(Long id, String name, String mail, String nin, Calendar register, List<Phone> phones) {
         this.id = id;
         this.name = name;
         this.mail = mail;
         this.nin = nin;
+        this.register = register;
+        this.phones = phones;
     }
 
     public Long getId() {
@@ -92,5 +110,13 @@ public class Customer {
 
     public void setRegister(Calendar register) {
         this.register = register;
+    }
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
     }
 }
