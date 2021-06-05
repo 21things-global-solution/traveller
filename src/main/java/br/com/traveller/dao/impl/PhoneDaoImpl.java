@@ -7,7 +7,7 @@ import br.com.traveller.model.Phone;
 
 public class PhoneDaoImpl extends PersistedImpl<Phone, Long> implements PhoneDao {
 
-    protected PhoneDaoImpl(EntityManager manager) {
+    public PhoneDaoImpl(EntityManager manager) {
         super(manager);
     }
 

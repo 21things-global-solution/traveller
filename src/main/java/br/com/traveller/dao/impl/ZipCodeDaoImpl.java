@@ -7,7 +7,7 @@ import br.com.traveller.model.ZipCode;
 
 public class ZipCodeDaoImpl extends PersistedImpl<ZipCode, Long> implements ZipCodeDao {
 
-    protected ZipCodeDaoImpl(EntityManager manager) {
+    public ZipCodeDaoImpl(EntityManager manager) {
         super(manager);
     }
 

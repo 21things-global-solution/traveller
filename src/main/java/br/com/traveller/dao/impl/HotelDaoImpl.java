@@ -7,7 +7,7 @@ import br.com.traveller.model.Hotel;
 
 public class HotelDaoImpl extends PersistedImpl<Hotel, Long> implements HotelDao {
 
-    protected HotelDaoImpl(EntityManager manager) {
+    public HotelDaoImpl(EntityManager manager) {
         super(manager);
     }
 

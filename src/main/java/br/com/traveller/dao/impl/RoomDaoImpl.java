@@ -7,7 +7,7 @@ import br.com.traveller.model.Room;
 
 public class RoomDaoImpl extends PersistedImpl<Room, Long> implements RoomDao {
 
-    protected RoomDaoImpl(EntityManager manager) {
+    public RoomDaoImpl(EntityManager manager) {
         super(manager);
     }
 

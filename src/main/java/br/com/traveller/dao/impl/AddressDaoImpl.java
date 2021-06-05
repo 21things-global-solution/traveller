@@ -7,7 +7,7 @@ import br.com.traveller.model.Address;
 
 public class AddressDaoImpl extends PersistedImpl<Address, Long> implements AddressDao {
 
-    protected AddressDaoImpl(EntityManager manager) {
+    public AddressDaoImpl(EntityManager manager) {
         super(manager);
     }
 

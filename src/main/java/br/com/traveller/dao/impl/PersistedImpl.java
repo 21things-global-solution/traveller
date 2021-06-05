@@ -16,7 +16,7 @@ public abstract class PersistedImpl<E, K> implements Persisted<E, K> {
     private Class<E> clazz;
 
     @SuppressWarnings("unchecked")
-    protected PersistedImpl(EntityManager manager) {
+    public PersistedImpl(EntityManager manager) {
         this.manager = manager;
         this.clazz = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }

@@ -7,7 +7,7 @@ import br.com.traveller.model.Customer;
 
 public class CustomerDaoImpl extends PersistedImpl<Customer, Long> implements CustomerDao {
 
-    protected CustomerDaoImpl(EntityManager manager) {
+    public CustomerDaoImpl(EntityManager manager) {
         super(manager);
     }
 
