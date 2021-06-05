@@ -68,6 +68,11 @@ public class Hotel implements Serializable {
                 + ", reservations=" + reservations + ", rooms=" + rooms + ", site=" + site + "]";
     }
 
+    public Hotel(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
     public Hotel() {
     }
 
