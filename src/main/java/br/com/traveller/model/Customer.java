@@ -1,5 +1,7 @@
 package br.com.traveller.model;
 
+import java.util.Calendar;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "T_GS_CLIENTE")
@@ -24,12 +30,18 @@ public class Customer {
     @Column(name = "ds_email")
     private String mail;
 
-    @Column(name = "nr_cpf", length = 14, nullable = false)
+    @Column(name = "nr_cpf", length = 14, nullable = false, unique = true)
     private String nin;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_cadastro", nullable = false, updatable = false)
+    private Calendar register;
 
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + "]";
+        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + ", register=" + register
+                + "]";
     }
 
     public Customer() {
@@ -72,5 +84,13 @@ public class Customer {
 
     public void setNin(String nin) {
         this.nin = nin;
+    }
+
+    public Calendar getRegister() {
+        return register;
+    }
+
+    public void setRegister(Calendar register) {
+        this.register = register;
     }
 }
