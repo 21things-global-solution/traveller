@@ -1,7 +1,6 @@
 package br.com.traveller.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,7 +30,7 @@ public class Room implements Serializable {
     private RoomType type;
 
     @Column(name = "vl_quarto", length = 15)
-    private BigDecimal value;
+    private Double value;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cd_hotel", nullable = false)
@@ -46,7 +45,7 @@ public class Room implements Serializable {
     public Room() {
     }
 
-    public Room(Long id, String description, RoomType type, BigDecimal value, Hotel hotel) {
+    public Room(Long id, String description, RoomType type, Double value, Hotel hotel) {
         this.id = id;
         this.description = description;
         this.type = type;
@@ -54,7 +53,7 @@ public class Room implements Serializable {
         this.hotel = hotel;
     }
 
-    public Room(String description, RoomType type, BigDecimal value, Hotel hotel) {
+    public Room(String description, RoomType type, Double value, Hotel hotel) {
         this.description = description;
         this.type = type;
         this.value = value;
@@ -85,11 +84,11 @@ public class Room implements Serializable {
         this.type = type;
     }
 
-    public BigDecimal getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(BigDecimal value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
