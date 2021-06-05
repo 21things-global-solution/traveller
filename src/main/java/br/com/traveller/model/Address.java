@@ -1,5 +1,7 @@
 package br.com.traveller.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "T_GS_ENDERECO")
 @SequenceGenerator(name = "address", allocationSize = 1, sequenceName = "SQ_GS_ENDERECO")
-public class Address {
+public class Address implements Serializable {
 
     @Id
     @GeneratedValue(generator = "address", strategy = GenerationType.SEQUENCE)

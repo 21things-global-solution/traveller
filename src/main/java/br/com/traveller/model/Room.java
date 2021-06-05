@@ -1,5 +1,6 @@
 package br.com.traveller.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "T_GS_QUARTO")
 @SequenceGenerator(name = "room", allocationSize = 1, sequenceName = "SQ_GS_QUARTO")
-public class Room {
+public class Room implements Serializable {
 
     @Id
     @GeneratedValue(generator = "room", strategy = GenerationType.SEQUENCE)

@@ -1,5 +1,6 @@
 package br.com.traveller.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "T_GS_CEP")
 @SequenceGenerator(name = "zipCode", allocationSize = 1, sequenceName = "SQ_GS_CEP")
-public class ZipCode {
+public class ZipCode implements Serializable {
 
     @Id
     @GeneratedValue(generator = "zipCode", strategy = GenerationType.SEQUENCE)

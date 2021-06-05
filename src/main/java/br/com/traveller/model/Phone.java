@@ -1,5 +1,6 @@
 package br.com.traveller.model;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.CascadeType;
@@ -20,7 +21,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 @Table(name = "T_GS_TELEFONE")
 @SequenceGenerator(name = "phone", allocationSize = 1, sequenceName = "SQ_GS_TELEFONE")
-public class Phone {
+public class Phone implements Serializable {
 
     @Id
     @GeneratedValue(generator = "phone", strategy = GenerationType.SEQUENCE)
