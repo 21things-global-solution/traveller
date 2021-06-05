@@ -6,6 +6,7 @@ import java.util.GregorianCalendar;
 import javax.persistence.EntityManager;
 
 import br.com.traveller.connection.ConnectionFactory;
+import br.com.traveller.connection.ConnectionType;
 import br.com.traveller.dao.AddressDao;
 import br.com.traveller.dao.impl.AddressDaoImpl;
 import br.com.traveller.exception.TransactionException;
@@ -32,7 +33,7 @@ public class StoreData {
         // https://www.marriott.com/hotels/travel/saobr-renaissance-sao-paulo-hotel/
         // https://www.marriott.com/hotels/travel/saobr-renaissance-sao-paulo-hotel/
 
-        EntityManager em = ConnectionFactory.getInstance().createEntityManager();
+        EntityManager em = ConnectionFactory.getInstance(ConnectionType.MANIPULATE).createEntityManager();
 
         Hotel hotel1 = new Hotel("IBIS Styles São Paulo Anhembi", "1133365400", "https://all.accor.com/hotel/9596/index.pt-br.shtml", "h9596-re@accor.com.br");
         Hotel hotel2 = new Hotel("Comfort Ibirapuera", "1146730255");
@@ -188,7 +189,7 @@ public class StoreData {
         } finally{
             // Close
             em.close();
-            ConnectionFactory.getInstance().close();
+            ConnectionFactory.getInstance(ConnectionType.MANIPULATE).close();
         }
     }
 }
