@@ -28,9 +28,6 @@ public class Reservation implements Serializable {
     @Column(name = "cd_reserva")
     private Long id;
 
-    @Column(name = "nr_dias", length = 3, nullable = false)
-    private Integer days;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cd_cliente", nullable = false)
     private Customer customer;
@@ -50,8 +47,8 @@ public class Reservation implements Serializable {
 
     @Override
     public String toString() {
-        return "Reservation [checkIn=" + checkIn + ", checkOut=" + checkOut + ", customer=" + customer + ", days="
-                + days + ", hotel=" + hotel + ", id=" + id + "]";
+        return "Reservation [checkIn=" + checkIn + ", checkOut=" + checkOut + ", customer=" + customer + ", hotel="
+                + hotel + ", id=" + id + "]";
     }
 
     public Reservation(Calendar checkIn, Calendar checkOut) {
@@ -62,9 +59,8 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(Long id, Integer days, Customer customer, Hotel hotel, Calendar checkIn, Calendar checkOut) {
+    public Reservation(Long id, Customer customer, Hotel hotel, Calendar checkIn, Calendar checkOut) {
         this.id = id;
-        this.days = days;
         this.customer = customer;
         this.hotel = hotel;
         this.checkIn = checkIn;
@@ -77,14 +73,6 @@ public class Reservation implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getDays() {
-        return days;
-    }
-
-    public void setDays(Integer days) {
-        this.days = days;
     }
 
     public Customer getCustomer() {
