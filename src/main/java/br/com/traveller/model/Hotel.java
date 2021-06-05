@@ -38,6 +38,17 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    private List<Room> rooms;
+
+    public void addRooms(Room room) {
+        if (this.rooms == null) {
+            this.rooms = new ArrayList<>();
+        }
+        this.rooms.add(room);
+        room.setHotel(this);
+    }
+
     public void addReservation(Reservation reservation) {
         if (this.reservations == null) {
             this.reservations = new ArrayList<>();
@@ -49,19 +60,21 @@ public class Hotel {
     @Override
     public String toString() {
         return "Hotel [id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone + ", reservations="
-                + reservations + ", site=" + site + "]";
+                + reservations + ", rooms=" + rooms + ", site=" + site + "]";
     }
 
     public Hotel() {
     }
 
-    public Hotel(Long id, String name, String phone, String mail, String site, List<Reservation> reservations) {
+    public Hotel(Long id, String name, String phone, String mail, String site, List<Reservation> reservations,
+            List<Room> rooms) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.mail = mail;
         this.site = site;
         this.reservations = reservations;
+        this.rooms = rooms;
     }
 
     public Long getId() {
@@ -110,6 +123,14 @@ public class Hotel {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 
 }
