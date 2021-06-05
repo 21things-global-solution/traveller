@@ -53,6 +53,11 @@ public class Reservation {
                 + days + ", hotel=" + hotel + ", id=" + id + "]";
     }
 
+    public Reservation(Calendar checkIn, Calendar checkOut) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+    }
+
     public Reservation() {
     }
 
