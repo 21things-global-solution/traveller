@@ -5,7 +5,7 @@ import javax.persistence.Persistence;
 
 public class ConnectionFactory {
 
-    private static final String PERSISTENCE_UNIT = "oraclePu";
+    private static final String PERSISTENCE_UNIT = "oraclePU";
 
     private static EntityManagerFactory factory;
 
