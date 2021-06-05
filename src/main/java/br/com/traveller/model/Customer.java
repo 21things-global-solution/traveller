@@ -86,6 +86,12 @@ public class Customer {
         this.reservations = reservations;
     }
 
+    public Customer(String name, String nin, String mail) {
+        this.name = name;
+        this.nin = nin;
+        this.mail = mail;
+    }
+
     public Long getId() {
         return id;
     }
