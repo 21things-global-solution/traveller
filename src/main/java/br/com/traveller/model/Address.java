@@ -27,6 +27,7 @@ public class Address {
 
     @Id
     @JoinColumn(name = "cd_hotel", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
     private Hotel hotel;
 
     @Id
