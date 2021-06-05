@@ -12,7 +12,7 @@ import br.com.traveller.exception.TransactionException;
 
 public abstract class PersistedImpl<E, K> implements Persisted<E, K> {
 
-    private EntityManager manager;
+    protected EntityManager manager;
     private Class<E> clazz;
 
     @SuppressWarnings("unchecked")
