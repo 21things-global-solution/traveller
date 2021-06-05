@@ -10,8 +10,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "T_GS_CEP_ENDERECO")
-@SequenceGenerator(name = "address", allocationSize = 1, sequenceName = "SQ_GS_CEP_ENDERECO")
+@Table(name = "T_GS_ENDERECO")
+@SequenceGenerator(name = "address", allocationSize = 1, sequenceName = "SQ_GS_ENDERECO")
 public class Address {
 
     @Id
@@ -31,23 +31,23 @@ public class Address {
 
     @Id
     @JoinColumn(name = "cd_logradouro", nullable = false)
-    private Street street;
+    private ZipCode zipCode;
 
     @Override
     public String toString() {
         return "Address [complement=" + complement + ", hotel=" + hotel + ", id=" + id + ", number=" + number
-                + ", street=" + street + "]";
+                + ", zipCode=" + zipCode + "]";
     }
 
     public Address() {
     }
 
-    public Address(Long id, String number, String complement, Hotel hotel, Street street) {
+    public Address(Long id, String number, String complement, Hotel hotel, ZipCode zipCode) {
         this.id = id;
         this.number = number;
         this.complement = complement;
         this.hotel = hotel;
-        this.street = street;
+        this.zipCode = zipCode;
     }
 
     public Long getId() {
@@ -82,12 +82,12 @@ public class Address {
         this.hotel = hotel;
     }
 
-    public Street getStreet() {
-        return street;
+    public ZipCode getZipCode() {
+        return zipCode;
     }
 
-    public void setStreet(Street street) {
-        this.street = street;
+    public void setZipCode(ZipCode zipCode) {
+        this.zipCode = zipCode;
     }
 
 }
