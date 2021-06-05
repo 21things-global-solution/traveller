@@ -31,7 +31,7 @@ public class Hotel implements Serializable {
     @Column(name = "nr_telefone", length = 11)
     private String phone;
 
-    @Column(name = "ds_email", nullable = false)
+    @Column(name = "ds_email")
     private String mail;
 
     @Column(name = "ds_site", length = 150)
