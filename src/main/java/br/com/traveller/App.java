@@ -6,12 +6,15 @@ import javax.persistence.EntityManager;
 
 import br.com.traveller.connection.ConnectionFactory;
 import br.com.traveller.connection.ConnectionType;
+import br.com.traveller.dao.HotelDao;
 import br.com.traveller.dao.PhoneDao;
 import br.com.traveller.dao.RoomDao;
+import br.com.traveller.dao.impl.HotelDaoImpl;
 import br.com.traveller.dao.impl.PhoneDaoImpl;
 import br.com.traveller.dao.impl.RoomDaoImpl;
 import br.com.traveller.model.Phone;
 import br.com.traveller.model.Room;
+import br.com.traveller.model.RoomType;
 
 public class App {
     public static void main(String[] args) {
@@ -43,7 +46,7 @@ public class App {
         System.out.println(header);
 
         List<Room> rooms = daoRoom.findByValueLessThan(237d);
-
+        
         for (Room room : rooms) {
             
             String hotelName = String.format("| %-30s ", room.getHotel().getName());
@@ -52,7 +55,16 @@ public class App {
             
             System.out.println(hotelName + roomDescription + roomValue);
         }
+        
+        HotelDao daoHotel = new HotelDaoImpl(em);
 
+        System.out.println("\n\nExibe o total por tipo de quarto\n");
+        header = String.format("| %-30s ", "Hotel") + String.format("| %-15s ", "Tipo Quarto") + String.format("| %-3s |", "Total");
+
+        Long count = daoHotel.countAllByHotelNameAndRoomType("Comfort Ibirapuera", RoomType.DUPLO_SOLTEIRO);
+        
+        System.out.println(header);
+        System.out.println(String.format("| %-15s ", RoomType.DUPLO_SOLTEIRO) + String.format("| %-3d |", count));
         // close
         em.close();
         ConnectionFactory.getInstance(ConnectionType.QUERY).close();
