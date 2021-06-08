@@ -9,7 +9,36 @@
 >
   <ui:composition template="_layout.xhtml">
     <ui:define name="content">
-      Body
+      <div class="card hotel">
+        <h:form id="form">
+          <p:dataView
+            var="item"
+            value="#{hotelBean.hotels}"
+            layout="list"
+            rows="5"
+            rowsPerPageTemplate="5,10"
+            paginator="true"
+            paginatorPosition="bottom"
+            paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+          >
+            <f:facet name="header">Os Melhores Hotéis da região</f:facet>
+            <p:dataViewListItem>
+              <div class="hotel-list-item">
+                <p:graphicImage name="img/sheraton-wtc.jpg" />
+
+                <div class="hotel-list-detail">
+                  <div class="hotel-name">#{hotel.name}</div>
+                  <p:rating readonly="true" value="#{hotel.rating}" />
+                </div>
+
+                <div class="hotel-list-action">
+                  <button>Quartos</button>
+                </div>
+              </div>
+            </p:dataViewListItem>
+          </p:dataView>
+        </h:form>
+      </div>
     </ui:define>
   </ui:composition>
 </html>
