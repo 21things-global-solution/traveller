@@ -135,12 +135,23 @@ public class StoreData {
         hotel4.setSite("https://mercure.accor.com");
         hotel5.setSite("http://www.sheratonsaopaulowtc.com.br");
         hotel6.setSite("https://www.bourbon.com.br/hotel/bourbon-convention-ibirapuera-hotel/");
-        hotel6.setMail("reservas.conv@bourbon.com.br");
         hotel7.setSite("https://www.bluetree.com.br/hotel/blue-tree-premium-paulista/");
         hotel8.setSite("https://www.radissonhotelsamericas.com/en-us/hotels/radisson-sao-paulo-paulista");
-        hotel8.setMail("vendas.rdpa@atlanticahotels.com.br");
         hotel9.setSite("https://www.marriott.com/hotels/travel/saobr-renaissance-sao-paulo-hotel/");
-        
+
+        hotel6.setMail("reservas.conv@bourbon.com.br");
+        hotel8.setMail("vendas.rdpa@atlanticahotels.com.br");
+
+        hotel1.setRating(2);
+        hotel2.setRating(3);
+        hotel3.setRating(4);
+        hotel4.setRating(4);
+        hotel5.setRating(5);
+        hotel6.setRating(3);
+        hotel7.setRating(4);
+        hotel8.setRating(4);
+        hotel9.setRating(5);
+
         address1.setHotel(hotel1);
         address2.setHotel(hotel2);
         address3.setHotel(hotel3);
@@ -150,7 +161,7 @@ public class StoreData {
         address7.setHotel(hotel7);
         address8.setHotel(hotel8);
         address9.setHotel(hotel9);
-        
+
         hotel1.addReservation(reservation1);
         hotel2.addReservation(reservation1);
         hotel3.addReservation(reservation4);
@@ -166,6 +177,12 @@ public class StoreData {
         customer4.addReservation(reservation3);
         customer3.addReservation(reservation4);
         customer5.addReservation(reservation2);
+
+        customer1.setPassword("123456");
+        customer2.setPassword("agyf0ime");
+        customer3.setPassword("5n51bsxg");
+        customer4.setPassword("f5yruush");
+        customer5.setPassword("josfjeqk");
 
         // Dao instance
         AddressDao dao = new AddressDaoImpl(em);
@@ -185,7 +202,7 @@ public class StoreData {
             System.out.println("\n\nDados cadastrados com sucesso!");
         } catch (TransactionException e) {
             System.err.println("\n\nExceção: " + e.getMessage());
-        } finally{
+        } finally {
             // Close
             em.close();
             ConnectionFactory.getInstance().close();
