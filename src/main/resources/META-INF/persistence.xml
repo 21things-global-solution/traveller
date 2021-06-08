@@ -1,6 +1,7 @@
-<persistence version="1.0"
-	xmlns="http://java.sun.com/xml/ns/persistence">
-	<persistence-unit name="dml-persistence-unit" transaction-type="RESOURCE_LOCAL">
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="oracle-persistence-unit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>br.com.traveller.model.Address</class>
 		<class>br.com.traveller.model.City</class>
@@ -15,29 +16,6 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
-			<property name="javax.persistence.jdbc.user" value="rm85398" />
-			<property name="javax.persistence.jdbc.password" value="150496" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl" />
-		</properties>
-	</persistence-unit>
-
-	<persistence-unit name="dql-persistence-unit" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>br.com.traveller.model.Address</class>
-		<class>br.com.traveller.model.City</class>
-		<class>br.com.traveller.model.Customer</class>
-		<class>br.com.traveller.model.District</class>
-		<class>br.com.traveller.model.Hotel</class>
-		<class>br.com.traveller.model.Phone</class>
-		<class>br.com.traveller.model.Reservation</class>
-		<class>br.com.traveller.model.Room</class>
-		<class>br.com.traveller.model.Street</class>
-		<properties>
-			<property name="hibernate.show_sql" value="false" />
-			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
 			<property name="javax.persistence.jdbc.user" value="rm85398" />

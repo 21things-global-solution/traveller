@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.com.traveller.connection.ConnectionFactory;
-import br.com.traveller.connection.ConnectionType;
 import br.com.traveller.dao.HotelDao;
 import br.com.traveller.dao.PhoneDao;
 import br.com.traveller.dao.RoomDao;
@@ -16,9 +15,13 @@ import br.com.traveller.model.Phone;
 import br.com.traveller.model.Room;
 import br.com.traveller.model.RoomType;
 
+/**
+ * To work properly, before run this file, change `hibernate.hbm2ddl.auto` in
+ * `persistence.xml` of `update` to `validate`
+ */
 public class App {
     public static void main(String[] args) {
-        EntityManager em = ConnectionFactory.getInstance(ConnectionType.QUERY).createEntityManager();
+        EntityManager em = ConnectionFactory.getInstance().createEntityManager();
 
         PhoneDao daoPhone = new PhoneDaoImpl(em);
 
@@ -60,15 +63,14 @@ public class App {
         HotelDao daoHotel = new HotelDaoImpl(em);
 
         System.out.println("\n\nExibe o total por tipo de quarto\n");
-        header = String.format("| %-30s ", "Hotel") + String.format("| %-15s ", "Tipo Quarto")
-                + String.format("| %-3s |", "Total");
+        header = String.format("| %-15s ", "Tipo Quarto") + String.format("| %-5s |", "Total");
 
         Long count = daoHotel.countAllByHotelNameAndRoomType("Comfort Ibirapuera", RoomType.DUPLO_SOLTEIRO);
 
         System.out.println(header);
-        System.out.println(String.format("| %-15s ", RoomType.DUPLO_SOLTEIRO) + String.format("| %-3d |", count));
+        System.out.println(String.format("| %-15s ", RoomType.DUPLO_SOLTEIRO) + String.format("| %5d |", count));
         // close
         em.close();
-        ConnectionFactory.getInstance(ConnectionType.QUERY).close();
+        ConnectionFactory.getInstance().close();
     }
 }
