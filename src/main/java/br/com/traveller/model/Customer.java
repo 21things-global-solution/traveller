@@ -49,6 +49,9 @@ public class Customer implements Serializable {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
+    @Column(name = "ds_password", nullable = false)
+    private String password;
+
     public void addPhone(Phone phone) {
         if (this.phones == null) {
             this.phones = new ArrayList<>();
@@ -69,22 +72,20 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + ", phones=" + phones
-                + ", register=" + register + ", reservations=" + reservations + "]";
+        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + ", password=" + password
+                + ", phones=" + phones + ", register=" + register + ", reservations=" + reservations + "]";
     }
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, String mail, String nin, Calendar register, List<Phone> phones,
-            List<Reservation> reservations) {
+    public Customer(Long id, String name, String mail, String nin, Calendar register, String password) {
         this.id = id;
         this.name = name;
         this.mail = mail;
         this.nin = nin;
         this.register = register;
-        this.phones = phones;
-        this.reservations = reservations;
+        this.password = password;
     }
 
     public Customer(String name, String nin, String mail) {
@@ -147,5 +148,13 @@ public class Customer implements Serializable {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
