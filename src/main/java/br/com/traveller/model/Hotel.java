@@ -46,6 +46,9 @@ public class Hotel implements Serializable {
     @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL)
     private Address address;
 
+    @Column(name = "in_classificacao")
+    private Integer rating;
+
     public void addRooms(Room room) {
         if (this.rooms == null) {
             this.rooms = new ArrayList<>();
@@ -65,7 +68,7 @@ public class Hotel implements Serializable {
     @Override
     public String toString() {
         return "Hotel [address=" + address + ", id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone
-                + ", reservations=" + reservations + ", rooms=" + rooms + ", site=" + site + "]";
+                + ", rating=" + rating + ", reservations=" + reservations + ", rooms=" + rooms + ", site=" + site + "]";
     }
 
     public Hotel(String name, String phone) {
@@ -76,16 +79,14 @@ public class Hotel implements Serializable {
     public Hotel() {
     }
 
-    public Hotel(Long id, String name, String phone, String mail, String site, List<Reservation> reservations,
-            List<Room> rooms, Address address) {
+    public Hotel(Long id, String name, String phone, String mail, String site, Address address, Integer rating) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.mail = mail;
         this.site = site;
-        this.reservations = reservations;
-        this.rooms = rooms;
         this.address = address;
+        this.rating = rating;
     }
 
     public Hotel(String name, String phone, String site, String mail) {
@@ -157,6 +158,14 @@ public class Hotel implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
 }
