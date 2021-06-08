@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <h:head>
+    <f:facet name="first">
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+      <title><ui:insert name="title">Home</ui:insert> | Traveller</title>
+    </f:facet>
+  </h:head>
+
+  <h:body>
+    <f:facet name="last">
+      <h:outputStylesheet library="css" name="main.min.css" />
+    </f:facet>
+
+    <div id="root">
+      <header>
+        <ui:insert name="header">
+          <div class="card">
+            <h:form>
+              <p:menubar>
+                <p:menuitem value="Home" icon="pi pi-fw pi-home" />
+                <f:facet name="options">
+                  <p:button value="Sair" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info" />
+                </f:facet>
+              </p:menubar>
+            </h:form>
+          </div>
+        </ui:insert>
+      </header>
+
+      <main>
+        <ui:insert name="content" />
+      </main>
+    </div>
+  </h:body>
+</html>
