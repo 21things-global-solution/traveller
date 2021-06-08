@@ -14,10 +14,16 @@
 		<class>br.com.traveller.model.Room</class>
 		<class>br.com.traveller.model.Street</class>
 		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!--
+			Oracle Dialect was commented due causing error detailed in: 
+			https://pastebin.com/xgr9hTDy
+			And solved with:
+			https://stackoverflow.com/questions/38744825/org-h2-jdbc-jdbcsqlexception-table-all-sequences-not-found/40171681
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+ 			-->
 			<!-- JDBC Connection -->
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
 			<property name="javax.persistence.jdbc.user" value="rm85398" />
