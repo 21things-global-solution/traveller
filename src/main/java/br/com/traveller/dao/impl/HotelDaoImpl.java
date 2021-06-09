@@ -21,4 +21,10 @@ public class HotelDaoImpl extends PersistedImpl<Hotel, Long> implements HotelDao
                 .getSingleResult();
     }
 
+    @Override
+    public boolean exists(Long id) {
+        Hotel instance = findById(id);
+        return instance != null;
+    }
+
 }

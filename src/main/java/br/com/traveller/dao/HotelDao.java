@@ -13,4 +13,12 @@ public interface HotelDao extends Persisted<Hotel, Long> {
      * @return Long count all instances
      */
     Long countAllByHotelNameAndRoomType(String name, RoomType type);
+
+    /**
+     * Check if entity stored
+     * 
+     * @param id hotel id
+     * @return boolean true if exists
+     */
+    boolean exists(Long id);
 }
