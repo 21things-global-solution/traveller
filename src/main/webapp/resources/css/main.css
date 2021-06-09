@@ -15,6 +15,44 @@ main {
   margin-top: 1rem;
 }
 
+.wrapper {
+  width: 50%;
+  margin: 7em auto;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper .input-group {
+  width: 60%;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+.wrapper .ui-inputgroup .ui-inputtext {
+  width: 100%;
+}
+.wrapper .ui-password {
+  width: 100%;
+  padding-left: 0;
+}
+.wrapper .ui-password input {
+  width: 100%;
+}
+.wrapper .new-account {
+  margin-top: 0.5rem;
+  font-size: 12px;
+  text-align: center;
+  width: 60%;
+  padding-right: 0.2rem;
+}
+.wrapper .new-account a {
+  font-size: inherit;
+}
+.wrapper .ui-button {
+  width: 60%;
+}
+
 .hotel .hotel-name {
   font-size: 1rem;
   font-weight: 700;
@@ -50,6 +88,11 @@ body .ui-dataview .ui-dataview-header {
 body .ui-dataview .ui-dataview-content {
   text-align: center;
   padding-top: 1rem;
+}
+body .ui-inputgroup input:first-child {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: none;
 }
 
 .ui-dataview .ui-dataview-header .ui-dataview-layout-options {

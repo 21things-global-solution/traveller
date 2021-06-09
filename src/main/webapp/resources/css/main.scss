@@ -15,6 +15,51 @@ main {
   margin-top: 1rem;
 }
 
+.wrapper {
+  width: 50%;
+  margin: 7em auto;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .input-group {
+    width: 60%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .ui-inputgroup .ui-inputtext {
+    width: 100%;
+  }
+
+  .ui-password {
+    width: 100%;
+    padding-left: 0;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .new-account {
+    margin-top: 0.5rem;
+    font-size: 12px;
+    text-align: center;
+    width: 60%;
+    padding-right: 0.2rem;
+
+    a {
+      font-size: inherit;
+    }
+  }
+
+  .ui-button {
+    width: 60%;
+  }
+}
+
 .hotel {
   .hotel-name {
     font-size: 1rem;
@@ -47,16 +92,23 @@ main {
 }
 
 /* Primefaces reboot */
-body .ui-dataview {
-  .ui-dataview-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
+body {
+  .ui-dataview {
+    .ui-dataview-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+    .ui-dataview-content {
+      text-align: center;
+      padding-top: 1rem;
+    }
   }
-  .ui-dataview-content {
-    text-align: center;
-    padding-top: 1rem;
+  .ui-inputgroup input:first-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-left: none;
   }
 }
 

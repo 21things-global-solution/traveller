@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <ui:composition template="_layout.xhtml">
+    <ui:define name="title">Login</ui:define>
+    <ui:define name="header" />
+    <ui:define name="content">
+      <h:form>
+        <div class="wrapper">
+          <div class="ui-inputgroup input-group">
+            <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <p:inputText placeholder="Email" />
+          </div>
+          <div class="ui-inputgroup input-group">
+            <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
+            <p:password toggleMask="true" placeholder="Senha" />
+          </div>
+
+          <p:commandButton type="button" value="Acessar" />
+
+          <span class="new-account">Ainda não possui conta? <p:commandLink value="Crie uma agora" /></span>
+        </div>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+</html>
