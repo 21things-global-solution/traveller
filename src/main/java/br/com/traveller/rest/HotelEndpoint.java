@@ -27,7 +27,15 @@ public class HotelEndpoint {
 
     @GET
     public List<Hotel> index() {
-        return dao.findAll();
+        List<Hotel> hotels = dao.findAll();
+
+        hotels.stream().forEach(hotel -> {
+            hotel.setReservations(null);
+            hotel.setAddress(null);
+            hotel.setRooms(null);
+        });
+
+        return hotels;
     }
 
     @POST
