@@ -35,9 +35,6 @@ public class Customer implements Serializable {
     @Column(name = "ds_email")
     private String mail;
 
-    @Column(name = "nr_cpf", length = 14, nullable = false, unique = true)
-    private String nin;
-
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_cadastro", nullable = false, updatable = false)
@@ -72,26 +69,25 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", nin=" + nin + ", password=" + password
-                + ", phones=" + phones + ", register=" + register + ", reservations=" + reservations + "]";
+        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", password=" + password + ", phones="
+                + phones + ", register=" + register + ", reservations=" + reservations + "]";
     }
 
     public Customer() {
     }
 
-    public Customer(Long id, String name, String mail, String nin, Calendar register, String password) {
+    public Customer(Long id, String name, String mail, Calendar register, String password) {
         this.id = id;
         this.name = name;
         this.mail = mail;
-        this.nin = nin;
         this.register = register;
         this.password = password;
     }
 
-    public Customer(String name, String nin, String mail) {
+    public Customer(String name, String mail, String password) {
         this.name = name;
-        this.nin = nin;
         this.mail = mail;
+        this.password = password;
     }
 
     public Long getId() {
@@ -116,14 +112,6 @@ public class Customer implements Serializable {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public String getNin() {
-        return nin;
-    }
-
-    public void setNin(String nin) {
-        this.nin = nin;
     }
 
     public Calendar getRegister() {

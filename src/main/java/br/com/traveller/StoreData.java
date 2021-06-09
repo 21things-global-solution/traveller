@@ -83,11 +83,11 @@ public class StoreData {
         Room room17 = new Room("Deluxe, Guest room, 1 King", RoomType.CASAL, 672d, hotel9);
         Room room18 = new Room("Deluxe, Guest room, 2 Double", RoomType.DUPLO_SOLTEIRO, 699.12, hotel9);
 
-        Customer customer1 = new Customer("Luís Paulino", "986.777.660-73", "rm85398@fiap.com.br");
-        Customer customer2 = new Customer("Natália Emilly Nogueira", "492.615.531-17", "nnataliaemillynogueira@accent.com.br");
-        Customer customer3 = new Customer("Marcelo Osvaldo Guilherme Ribeiro", "770.591.948-60", "marceloosvaldoguilhermeribeiro..marceloosvaldoguilhermeribeiro@reval.net");
-        Customer customer4 = new Customer("Melissa Luiza Emilly Mendes", "621.380.554-00", "mmelissaluizaemillymendes@techdomus.com.br");
-        Customer customer5 = new Customer("Diego Renan Giovanni Santos", "956.855.900-08", "diegorenangiovannisantos..diegorenangiovannisantos@pozzer.net");
+        Customer customer1 = new Customer("Luís Paulino", "rm85398@fiap.com.br", "123456");
+        Customer customer2 = new Customer("Natália Emilly Nogueira", "nnataliaemillynogueira@accent.com.br","agyf0ime");
+        Customer customer3 = new Customer("Marcelo Osvaldo Guilherme Ribeiro", "marceloosvaldoguilhermeribeiro..marceloosvaldoguilhermeribeiro@reval.net","5n51bsxg");
+        Customer customer4 = new Customer("Melissa Luiza Emilly Mendes", "mmelissaluizaemillymendes@techdomus.com.br","f5yruush");
+        Customer customer5 = new Customer("Diego Renan Giovanni Santos", "diegorenangiovannisantos..diegorenangiovannisantos@pozzer.net","josfjeqk");
 
         Phone phone1 = new Phone("21993944049", PhoneType.CELULAR);
         Phone phone2 = new Phone("2138870619", PhoneType.FIXO);
@@ -177,12 +177,6 @@ public class StoreData {
         customer4.addReservation(reservation3);
         customer3.addReservation(reservation4);
         customer5.addReservation(reservation2);
-
-        customer1.setPassword("123456");
-        customer2.setPassword("agyf0ime");
-        customer3.setPassword("5n51bsxg");
-        customer4.setPassword("f5yruush");
-        customer5.setPassword("josfjeqk");
 
         // Dao instance
         AddressDao dao = new AddressDaoImpl(em);
