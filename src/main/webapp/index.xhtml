@@ -12,7 +12,7 @@
       <div class="card hotel">
         <h:form id="form">
           <p:dataView
-            var="item"
+            var="hotel"
             value="#{hotelBean.hotels}"
             layout="list"
             rows="5"
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="hotel-list-action">
-                  <button>Quartos</button>
+                  <p:commandButton type="button" value="Quartos" />
                 </div>
               </div>
             </p:dataViewListItem>
