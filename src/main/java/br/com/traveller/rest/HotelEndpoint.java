@@ -3,7 +3,9 @@ package br.com.traveller.rest;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -76,6 +78,24 @@ public class HotelEndpoint {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
         return Response.status(Response.Status.OK).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response destroy(@PathParam("id") Long id) {
+        try {
+            dao.delete(id);
+        } catch (EntityNotFoundException e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        try {
+            dao.commit();
+        } catch (TransactionException e) {
+            e.printStackTrace();
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+        return Response.status(Response.Status.ACCEPTED).build();
     }
 
 }
