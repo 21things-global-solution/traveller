@@ -28,6 +28,11 @@
 
                 <div class="hotel-list-detail">
                   <div class="hotel-name">#{hotel.name}</div>
+                  <div class="hotel-description">
+                    #{hotel.address.zipCode.name}, #{hotel.address.number} -
+                    #{hotel.address.zipCode.district}, #{hotel.address.zipCode.city} -
+                    #{hotel.address.zipCode.state.toString()}, #{hotel.address.zipCode.number}
+                  </div>
                   <p:rating readonly="true" value="#{hotel.rating}" />
                 </div>
 

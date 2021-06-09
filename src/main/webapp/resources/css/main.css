@@ -34,6 +34,7 @@ main {
 }
 .hotel .hotel-list-item .hotel-list-detail {
   flex: 1 1 0;
+  text-align: left;
 }
 .hotel .hotel-list-item .hotel-list-action {
   display: flex;
