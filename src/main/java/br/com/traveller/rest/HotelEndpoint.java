@@ -98,4 +98,19 @@ public class HotelEndpoint {
         return Response.status(Response.Status.ACCEPTED).build();
     }
 
+    @GET
+    @Path("{id}")
+    public Hotel show(@PathParam("id") Long id) {
+        Hotel instance = dao.findById(id);
+
+        // set null due raising StackOverflow recursion in JSON response
+        instance.getAddress().setHotel(null);
+        instance.getAddress().getZipCode().setAddresses(null);
+
+        instance.getRooms().forEach(room -> room.setHotel(null));
+        instance.setReservations(null);
+
+        return instance;
+    }
+
 }
