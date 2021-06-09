@@ -2,6 +2,7 @@ package br.com.traveller.bean;
 
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
@@ -11,6 +12,7 @@ import br.com.traveller.dao.impl.HotelDaoImpl;
 import br.com.traveller.model.Hotel;
 
 @Named
+@RequestScoped
 public class HotelBean {
 
     private static final EntityManager manager = ConnectionFactory.getInstance().createEntityManager();
