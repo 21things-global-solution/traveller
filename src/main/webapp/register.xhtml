@@ -8,11 +8,15 @@
   xmlns:p="http://primefaces.org/ui"
 >
   <ui:composition template="_layout.xhtml">
-    <ui:define name="title">Login</ui:define>
+    <ui:define name="title">Registro</ui:define>
     <ui:define name="header" />
     <ui:define name="content">
       <h:form>
         <div class="wrapper">
+          <div class="ui-inputgroup input-group">
+            <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+            <p:inputText placeholder="Nome" />
+          </div>
           <div class="ui-inputgroup input-group">
             <span class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></span>
             <p:inputText placeholder="Email" />
@@ -21,10 +25,16 @@
             <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
             <p:password toggleMask="true" placeholder="Senha" />
           </div>
+          <div class="ui-inputgroup input-group">
+            <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
+            <p:password toggleMask="true" placeholder="Repetir Senha" />
+          </div>
 
-          <p:commandButton type="button" value="Acessar" />
+          <p:commandButton type="button" value="Cadastrar" />
 
-          <span class="new-account">Ainda não possui conta? <p:commandLink value="Crie uma agora" action="register.xhtml" /></span>
+          <span class="new-account">
+            Já possui uma conta? <p:commandLink value="Faça o login aqui" action="login.xhtml" />
+          </span>
         </div>
       </h:form>
     </ui:define>
