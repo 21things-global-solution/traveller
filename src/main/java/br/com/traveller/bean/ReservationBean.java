@@ -1,6 +1,7 @@
 package br.com.traveller.bean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -22,6 +23,8 @@ public class ReservationBean {
 
     private static final FacesContext context = FacesContext.getCurrentInstance();
 
+    private static final Customer customer = (Customer) context.getExternalContext().getSessionMap().get("customer");
+
     private Reservation reservation = new Reservation();
 
     private Room room = new Room();
@@ -35,7 +38,6 @@ public class ReservationBean {
     private final LocalDate checkOutMinDate = LocalDate.now().plusDays(1);
 
     public void save() {
-        Customer customer = (Customer) context.getExternalContext().getSessionMap().get("customer");
         reservation.setCustomer(customer);
         reservation.setRoom(room);
         
@@ -47,6 +49,10 @@ public class ReservationBean {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
         }
         context.addMessage(null, new FacesMessage("Reserva efetuada com sucesso!"));
+    }
+
+    public List<Reservation> getReservations(){
+        return dao.findAllByCustomer(customer);
     }
 
     public LocalDate getCheckInMinDate() {

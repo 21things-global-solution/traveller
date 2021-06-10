@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <ui:composition template="_layout.xhtml">
+    <ui:define name="title">Reservas</ui:define>
+    <ui:define name="content">
+      <h:form>
+        <div class="card">
+          <p:dataTable var="booking" value="#{book.reservations}">
+            <p:column headerText="Hotel">
+              <h:outputText value="#{booking.room.hotel.name}" />
+            </p:column>
+
+            <p:column headerText="Quarto">
+              <h:outputText value="#{booking.room.description}" />
+            </p:column>
+
+            <p:column headerText="Check-In">
+              <h:outputText value="#{booking.checkIn}">
+                <f:convertDateTime type="localDate" locale="pt_BR" dateStyle="short" />
+              </h:outputText>
+            </p:column>
+
+            <p:column headerText="Check-Out">
+              <h:outputText value="#{booking.checkOut}">
+                <f:convertDateTime type="localDate" locale="pt_BR" dateStyle="short" />
+              </h:outputText>
+            </p:column>
+
+            <p:column headerText="Valor">
+              <h:outputText value="#{booking.room.value}" >
+                <f:convertNumber pattern="R$ ,###.00" /> 
+                </h:outputText>
+            </p:column>
+          </p:dataTable>
+        </div>
+      </h:form>
+    </ui:define>
+  </ui:composition>
+</html>
