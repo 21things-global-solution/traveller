@@ -53,6 +53,14 @@ main {
   width: 60%;
 }
 
+.hotel.header {
+  background-color: #fff;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+.hotel .p-field label {
+  display: block;
+}
 .hotel .name {
   font-size: 1rem;
   font-weight: 700;
@@ -80,9 +88,22 @@ main {
   flex: 1 1 0;
   text-align: left;
 }
-.hotel .list-item .list-action {
+.hotel .list-item .list-action,
+.hotel .list-item .list-action form {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+}
+.hotel a {
+  color: initial;
+  text-decoration: none;
+  cursor: pointer;
+}
+.hotel a:hover {
+  text-decoration: underline;
+}
+.hotel a:visited {
+  color: initial;
 }
 
 /* Primefaces reboot */

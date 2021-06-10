@@ -10,9 +10,66 @@
   <ui:composition template="_layout.xhtml">
     <ui:define name="title">Quartos | Hotel #{hotel.name}</ui:define>
     <ui:define name="content">
-      <div class="card header"></div>
-      <div class="card hotel">
-        <h:form id="form">
+      <p:growl id="status" showDetail="false">
+        <p:autoUpdate />
+      </p:growl>
+
+      <h:form>
+        <div class="card header hotel">
+          <div class="list-item">
+            <p:graphicImage name="img/#{hotel.image}" />
+
+            <div class="list-detail">
+              <div class="name">#{hotel.name}</div>
+              <div class="description">
+                #{hotel.address.zipCode.name}, #{hotel.address.number} -
+                #{hotel.address.zipCode.district}, #{hotel.address.zipCode.city} -
+                #{hotel.address.zipCode.state.toString()},
+                #{hotel.address.zipCode.number.replaceAll("^([0-9]{5})([0-9]{3})$","$1-$2")}
+              </div>
+              <div class="extra">
+                #{hotel.phone.replaceAll("^([0-9]{2})([0-9]{4,5})([0-9]{4})$", "($1) $2-$3")} -
+                <a href="#{hotel.site}" rel="noopener noreferrer" target="_blank">
+                  #{hotel.site}
+                </a>
+              </div>
+              <p:rating readonly="true" value="#{hotel.rating}" disabled="true" />
+            </div>
+
+            <div class="list-action">
+              <div class="p-field">
+                <p:outputLabel for="checkIn" value="Check-In" />
+                <p:calendar
+                  id="checkIn"
+                  mindate="#{book.checkInMinDate}"
+                  value="#{book.reservation.checkIn}"
+                  navigator="true"
+                  required="true"
+                  requiredMessage="Check-in é obrigatório"
+                  pattern="dd/MM/yyyy"
+                  mask="true"
+                  showOn="button"
+                  title="Check-In"
+                />
+              </div>
+              <div class="p-field">
+                <p:outputLabel for="checkOut" value="Check-Out" />
+                <p:calendar
+                  id="checkOut"
+                  value="#{book.reservation.checkOut}"
+                  mindate="#{book.checkOutMinDate}"
+                  navigator="true"
+                  pattern="dd/MM/yyyy"
+                  mask="true"
+                  showOn="button"
+                  title="Check-Out"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card hotel">
           <p:dataView
             var="room"
             value="#{hotel.rooms}"
@@ -38,13 +95,15 @@
                   <h:outputText value="#{room.value}" styleClass="price">
                     <f:convertNumber currencySymbol="R$" type="currency" />
                   </h:outputText>
-                  <p:commandButton type="button" value="Reservar" />
+                  <p:commandButton value="Reservar" action="#{book.save}">
+                    <f:setPropertyActionListener value="#{room}" target="#{book.room}" />
+                  </p:commandButton>
                 </div>
               </div>
             </p:dataViewListItem>
           </p:dataView>
-        </h:form>
-      </div>
+        </div>
+      </h:form>
     </ui:define>
   </ui:composition>
 </html>

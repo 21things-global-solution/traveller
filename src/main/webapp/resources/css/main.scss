@@ -1,20 +1,16 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: #e7e7e7;
 }
-
 #root {
   width: 95%;
   margin: 0 auto;
 }
-
 main {
   margin-top: 1rem;
 }
-
 .wrapper {
   width: 50%;
   margin: 7em auto;
@@ -23,17 +19,14 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   .input-group {
     width: 60%;
     justify-content: center;
     margin-bottom: 0.5rem;
   }
-
   .ui-inputgroup .ui-inputtext {
     width: 100%;
   }
-
   .ui-password {
     width: 100%;
     padding-left: 0;
@@ -42,7 +35,6 @@ main {
       width: 100%;
     }
   }
-
   .account {
     margin-top: 0.5rem;
     font-size: 12px;
@@ -54,13 +46,19 @@ main {
       font-size: inherit;
     }
   }
-
   .ui-button {
     width: 60%;
   }
 }
-
 .hotel {
+  &.header {
+    background-color: #fff;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .p-field label {
+    display: block;
+  }
   .name {
     font-size: 1rem;
     font-weight: 700;
@@ -84,19 +82,29 @@ main {
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
       margin-right: 2rem;
     }
-
     .list-detail {
       flex: 1 1 0;
       text-align: left;
     }
-
-    .list-action {
+    .list-action,
+    .list-action form {
       display: flex;
       flex-direction: column;
+      gap: 0.5rem;
     }
   }
+  a {
+    color: initial;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+  a:visited {
+    color: initial;
+  }
 }
-
 /* Primefaces reboot */
 body {
   .ui-dataview {
@@ -117,7 +125,6 @@ body {
     border-left: none;
   }
 }
-
 .ui-dataview .ui-dataview-header .ui-dataview-layout-options {
   display: none;
 }

@@ -1,7 +1,7 @@
 package br.com.traveller.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -37,13 +35,11 @@ public class Reservation implements Serializable {
     private Room room;
 
     @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_check_in")
-    private Calendar checkIn;
+    private LocalDate checkIn;
 
-    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "dt_check_out")
-    private Calendar checkOut;
+    private LocalDate checkOut;
 
     @Override
     public String toString() {
@@ -51,7 +47,7 @@ public class Reservation implements Serializable {
                 + ", room=" + room + "]";
     }
 
-    public Reservation(Calendar checkIn, Calendar checkOut) {
+    public Reservation(LocalDate checkIn, LocalDate checkOut) {
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
@@ -59,7 +55,7 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(Long id, Customer customer, Room room, Calendar checkIn, Calendar checkOut) {
+    public Reservation(Long id, Customer customer, Room room, LocalDate checkIn, LocalDate checkOut) {
         this.id = id;
         this.customer = customer;
         this.room = room;
@@ -83,19 +79,19 @@ public class Reservation implements Serializable {
         this.customer = customer;
     }
 
-    public Calendar getCheckIn() {
+    public LocalDate getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Calendar checkIn) {
+    public void setCheckIn(LocalDate checkIn) {
         this.checkIn = checkIn;
     }
 
-    public Calendar getCheckOut() {
+    public LocalDate getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Calendar checkOut) {
+    public void setCheckOut(LocalDate checkOut) {
         this.checkOut = checkOut;
     }
 

@@ -1,7 +1,7 @@
 package br.com.traveller;
 
+import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.persistence.EntityManager;
 
@@ -64,7 +64,7 @@ public class StoreData {
         Address address8 = new Address("85", zipCode8);
         Address address9 = new Address("2233", zipCode9);
 
-        Room room1 = new Room("Quarto Standard com 1 cama de casal", RoomType.SOLTEIRO, 170d, hotel1);
+        Room room1 = new Room("Quarto Standard com 1 cama de solteiro", RoomType.SOLTEIRO, 170d, hotel1);
         Room room2 = new Room("Quarto Standard com 1 cama de casal", RoomType.CASAL, 314d, hotel1);
         Room room3 = new Room("LUXO TWIN NÃO FUMANTE", RoomType.DUPLO_SOLTEIRO, 172d, hotel2);
         Room room4 = new Room("SUPERIOR QUEEN NÃO FUMANTE", RoomType.CASAL, 192d, hotel2);
@@ -97,11 +97,11 @@ public class StoreData {
         Phone phone6 = new Phone("91989292991", PhoneType.CELULAR);
         Phone phone7 = new Phone("89984453379", PhoneType.CELULAR);
 
-        Reservation reservation1 = new Reservation(new GregorianCalendar(2021, Calendar.JUNE, 6), new GregorianCalendar(2021, Calendar.JUNE, 13));
-        Reservation reservation2 = new Reservation(new GregorianCalendar(2021, Calendar.JULY, 6), new GregorianCalendar(2021, Calendar.JULY, 13));
-        Reservation reservation3 = new Reservation(new GregorianCalendar(2020, Calendar.AUGUST, 6), new GregorianCalendar(2020, Calendar.AUGUST, 13));
-        Reservation reservation4 = new Reservation(new GregorianCalendar(2021, Calendar.SEPTEMBER, 6), new GregorianCalendar(2021, Calendar.SEPTEMBER, 13));
-        Reservation reservation5 = new Reservation(new GregorianCalendar(2020, Calendar.OCTOBER, 6), new GregorianCalendar(2020, Calendar.OCTOBER, 13));
+        Reservation reservation1 = new Reservation(LocalDate.of(2021, Calendar.JUNE, 6), LocalDate.of(2021, Calendar.JUNE, 13));
+        Reservation reservation2 = new Reservation(LocalDate.of(2021, Calendar.JULY, 6), LocalDate.of(2021, Calendar.JULY, 13));
+        Reservation reservation3 = new Reservation(LocalDate.of(2020, Calendar.AUGUST, 6), LocalDate.of(2020, Calendar.AUGUST, 13));
+        Reservation reservation4 = new Reservation(LocalDate.of(2021, Calendar.SEPTEMBER, 6), LocalDate.of(2021, Calendar.SEPTEMBER, 13));
+        Reservation reservation5 = new Reservation(LocalDate.of(2020, Calendar.OCTOBER, 6), LocalDate.of(2020, Calendar.OCTOBER, 13));
 
         // Link data
         customer1.addPhone(phone1);
