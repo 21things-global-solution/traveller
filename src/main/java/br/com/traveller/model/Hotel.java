@@ -47,6 +47,9 @@ public class Hotel implements Serializable {
     @Column(name = "in_classificacao")
     private Integer rating;
 
+    @Column(name="im_hotel")
+    private String image;
+
     public void addRooms(Room room) {
         if (this.rooms == null) {
             this.rooms = new ArrayList<>();
@@ -57,8 +60,8 @@ public class Hotel implements Serializable {
 
     @Override
     public String toString() {
-        return "Hotel [address=" + address + ", id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone
-                + ", rating=" + rating + ", site=" + site + "]";
+        return "Hotel [address=" + address + ", id=" + id + ", image=" + image + ", mail=" + mail + ", name=" + name
+                + ", phone=" + phone + ", rating=" + rating + ", site=" + site + "]";
     }
 
     public Hotel(String name, String phone) {
@@ -148,6 +151,14 @@ public class Hotel implements Serializable {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 }

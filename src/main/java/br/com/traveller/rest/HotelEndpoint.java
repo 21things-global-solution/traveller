@@ -34,7 +34,6 @@ public class HotelEndpoint {
         List<Hotel> hotels = dao.findAll();
 
         hotels.stream().forEach(hotel -> {
-            hotel.setReservations(null);
             hotel.setAddress(null);
             hotel.setRooms(null);
         });
@@ -108,7 +107,7 @@ public class HotelEndpoint {
         instance.getAddress().getZipCode().setAddresses(null);
 
         instance.getRooms().forEach(room -> room.setHotel(null));
-        instance.setReservations(null);
+        instance.getRooms().forEach(room -> room.setReservations(null));
 
         return instance;
     }

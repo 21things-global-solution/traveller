@@ -8,7 +8,7 @@
   xmlns:p="http://primefaces.org/ui"
 >
   <ui:composition template="_layout.xhtml">
-    <ui:define name="title">Quartos | Hotel X</ui:define>
+    <ui:define name="title">Quartos | Hotel #{hotel.name}</ui:define>
     <ui:define name="content">
       <div class="card header"></div>
       <div class="card hotel">
@@ -27,7 +27,7 @@
             <f:facet name="header">Os Melhores Quartos</f:facet>
             <p:dataViewListItem>
               <div class="list-item">
-                <p:graphicImage name="img/sheraton-wtc.jpg" />
+                <p:graphicImage name="img/room-sample.jpg" />
 
                 <div class="list-detail">
                   <div class="name">#{room.description}</div>

@@ -142,6 +142,16 @@ public class StoreData {
         hotel6.setMail("reservas.conv@bourbon.com.br");
         hotel8.setMail("vendas.rdpa@atlanticahotels.com.br");
 
+        hotel1.setImage("ibis-styles-anhembi.jpg");
+        hotel2.setImage("comfort-ibirapurera.jpg");
+        hotel3.setImage("blue-tree-morumbi.jpg");
+        hotel4.setImage("mercure-pamplona.jpg");
+        hotel5.setImage("sheraton-wtc.jpg");
+        hotel6.setImage("bourbon-ibirapuera.jpg");
+        hotel7.setImage("blue-tree-paulista.jpg");
+        hotel8.setImage("golden-tulip-paulista.jpg");
+        hotel9.setImage("renaissance-sao-paulo.jpg");
+
         hotel1.setRating(2);
         hotel2.setRating(3);
         hotel3.setRating(4);
