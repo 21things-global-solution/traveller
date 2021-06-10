@@ -38,7 +38,7 @@ public class CustomerBean {
     }
 
     public String logout() {
-        context.getExternalContext().getSessionMap().remove("customer");
+        context.getExternalContext().getSessionMap().clear();
         return "login?faces-redirect=true";
     }
 

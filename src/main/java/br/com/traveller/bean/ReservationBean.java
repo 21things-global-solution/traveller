@@ -3,6 +3,7 @@ package br.com.traveller.bean;
 import java.time.LocalDate;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -38,6 +39,7 @@ public class ReservationBean {
         reservation.setRoom(room);
         System.out.println(reservation);
         // TODO: implement save after Authorization Link
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Reserva efetuada com sucesso!"));
     }
 
     public LocalDate getCheckInMinDate() {

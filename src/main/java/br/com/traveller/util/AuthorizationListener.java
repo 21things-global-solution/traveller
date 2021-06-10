@@ -1,9 +1,12 @@
 package br.com.traveller.util;
 
+import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
+
+import br.com.traveller.model.Customer;
 
 public class AuthorizationListener implements PhaseListener {
 
@@ -11,9 +14,15 @@ public class AuthorizationListener implements PhaseListener {
     public void afterPhase(PhaseEvent event) {
         FacesContext context = FacesContext.getCurrentInstance();
         String page = context.getViewRoot().getViewId();
-        System.out.println(page);
-        if(page.equals("/login.xhtml")) return;
-        if(page.equals("/register.xhtml")) return;
+        if (page.matches("^/(login|register).xhtml$")) {
+            return;
+        }
+
+        Customer customer = (Customer) context.getExternalContext().getSessionMap().get("customer");
+        if (customer == null) {
+            NavigationHandler navigation = context.getApplication().getNavigationHandler();
+            navigation.handleNavigation(context, "", "login?faces-redirect=true");
+        }
     }
 
     @Override
