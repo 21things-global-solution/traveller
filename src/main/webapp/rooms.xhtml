@@ -8,12 +8,14 @@
   xmlns:p="http://primefaces.org/ui"
 >
   <ui:composition template="_layout.xhtml">
+    <ui:define name="title">Quartos | Hotel X</ui:define>
     <ui:define name="content">
+      <div class="card header"></div>
       <div class="card hotel">
         <h:form id="form">
           <p:dataView
-            var="hotel"
-            value="#{hotelBean.hotels}"
+            var="room"
+            value="#{hotel.rooms}"
             layout="list"
             rows="5"
             rowsPerPageTemplate="5,10"
@@ -22,26 +24,21 @@
             paginatorPosition="bottom"
             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
           >
-            <f:facet name="header">Os Melhores Hotéis da região</f:facet>
+            <f:facet name="header">Os Melhores Quartos</f:facet>
             <p:dataViewListItem>
               <div class="list-item">
                 <p:graphicImage name="img/sheraton-wtc.jpg" />
 
                 <div class="list-detail">
-                  <div class="name">#{hotel.name}</div>
-                  <div class="description">
-                    #{hotel.address.zipCode.name}, #{hotel.address.number} -
-                    #{hotel.address.zipCode.district}, #{hotel.address.zipCode.city} -
-                    #{hotel.address.zipCode.state.toString()},
-                    #{hotel.address.zipCode.number.replaceAll("^([0-9]{5})([0-9]{3})$","$1-$2")}
-                  </div>
-                  <p:rating readonly="true" value="#{hotel.rating}" disabled="true" />
+                  <div class="name">#{room.description}</div>
+                  <div class="description">#{room.type.toString()}</div>
                 </div>
 
                 <div class="list-action">
-                  <p:commandButton value="Quartos" action="#{hotelBean.showRooms}">
-                    <f:setPropertyActionListener value="#{hotel}" target="#{hotelBean.hotel}" />
-                  </p:commandButton>
+                  <h:outputText value="#{room.value}" styleClass="price">
+                    <f:convertNumber currencySymbol="R$" type="currency" />
+                  </h:outputText>
+                  <p:commandButton type="button" value="Reservar" />
                 </div>
               </div>
             </p:dataViewListItem>
