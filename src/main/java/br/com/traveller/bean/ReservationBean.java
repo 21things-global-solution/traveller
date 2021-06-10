@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import br.com.traveller.connection.ConnectionFactory;
 import br.com.traveller.dao.ReservationDao;
 import br.com.traveller.dao.impl.ReservationDaoImpl;
+import br.com.traveller.exception.TransactionException;
 import br.com.traveller.model.Customer;
 import br.com.traveller.model.Reservation;
 import br.com.traveller.model.Room;
@@ -19,7 +20,7 @@ import br.com.traveller.model.Room;
 @RequestScoped
 public class ReservationBean {
 
-    private final FacesContext context = FacesContext.getCurrentInstance();
+    private static final FacesContext context = FacesContext.getCurrentInstance();
 
     private Reservation reservation = new Reservation();
 
@@ -37,9 +38,15 @@ public class ReservationBean {
         Customer customer = (Customer) context.getExternalContext().getSessionMap().get("customer");
         reservation.setCustomer(customer);
         reservation.setRoom(room);
-        System.out.println(reservation);
-        // TODO: implement save after Authorization Link
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Reserva efetuada com sucesso!"));
+        
+        dao.create(reservation);
+        try {
+            dao.commit();
+        } catch (TransactionException e) {
+            e.printStackTrace();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+        }
+        context.addMessage(null, new FacesMessage("Reserva efetuada com sucesso!"));
     }
 
     public LocalDate getCheckInMinDate() {
