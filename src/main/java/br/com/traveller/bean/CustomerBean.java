@@ -36,6 +36,11 @@ public class CustomerBean {
         return "index?faces-redirect=true";
     }
 
+    public String logout() {
+        context.getExternalContext().getSessionMap().remove("customer");
+        return "login?faces-redirect=true";
+    }
+
     public Customer getCustomer() {
         return customer;
     }

@@ -30,7 +30,12 @@
               <p:menubar>
                 <p:menuitem value="Home" icon="pi pi-fw pi-home" outcome="index.xhtml" />
                 <f:facet name="options">
-                  <p:button value="Sair" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info" />
+                  <p:commandButton
+                    value="Sair"
+                    icon="pi pi-fw pi-sign-out"
+                    styleClass="ui-button-info"
+                    action="#{customerBean.logout}"
+                  />
                 </f:facet>
               </p:menubar>
             </h:form>
