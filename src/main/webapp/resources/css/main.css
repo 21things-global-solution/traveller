@@ -39,14 +39,14 @@ main {
 .wrapper .ui-password input {
   width: 100%;
 }
-.wrapper .new-account {
+.wrapper .account {
   margin-top: 0.5rem;
   font-size: 12px;
   text-align: center;
   width: 60%;
   padding-right: 0.2rem;
 }
-.wrapper .new-account a {
+.wrapper .account a {
   font-size: inherit;
 }
 .wrapper .ui-button {
