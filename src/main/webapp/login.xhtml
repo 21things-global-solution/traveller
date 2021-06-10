@@ -11,18 +11,42 @@
     <ui:define name="title">Login</ui:define>
     <ui:define name="header" />
     <ui:define name="content">
+      <p:growl id="status" showDetail="false">
+        <p:autoUpdate />
+      </p:growl>
+
       <h:form>
         <div class="wrapper">
           <div class="ui-inputgroup input-group">
             <span class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></span>
-            <p:inputText placeholder="Email" />
+            <p:inputText
+              type="email"
+              required="true"
+              placeholder="Email"
+              value="#{customerBean.customer.mail}"
+              requiredMessage="O Email é obrigatório"
+              validatorMessage="Email inválido"
+            >
+              <f:validateRegex pattern="^[A-z0-9_.]+@[A-z0-9]+\.[A-z]{2,}(\.[A-z]+)?$" />
+              <f:ajax event="blur" render="status" />
+            </p:inputText>
           </div>
           <div class="ui-inputgroup input-group">
             <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
-            <p:password toggleMask="true" placeholder="Senha" />
+            <p:password
+              required="true"
+              toggleMask="true"
+              placeholder="Senha"
+              value="#{customerBean.customer.password}"
+              requiredMessage="Senha não informada"
+              validatorMessage="Senha inválida"
+            >
+              <f:validateLength minimum="6" />
+              <f:ajax event="blur" render="status" />
+            </p:password>
           </div>
 
-          <p:commandButton type="button" value="Acessar" />
+          <p:commandButton update="status" value="Acessar" action="#{customerBean.login}" />
 
           <span class="account">
             Ainda não possui conta? <p:commandLink value="Crie uma agora" action="register.xhtml" />
