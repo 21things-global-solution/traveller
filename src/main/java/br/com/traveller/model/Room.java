@@ -1,6 +1,8 @@
 package br.com.traveller.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -39,10 +42,21 @@ public class Room implements Serializable {
     @JoinColumn(name = "cd_hotel", nullable = false)
     private Hotel hotel;
 
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
+
     @Override
     public String toString() {
         return "Room [description=" + description + ", hotel=" + hotel + ", id=" + id + ", type=" + type + ", value="
                 + value + "]";
+    }
+
+    public void addReservation(Reservation reservation) {
+        if (this.reservations == null) {
+            this.reservations = new ArrayList<>();
+        }
+        reservation.setRoom(this);
+        this.reservations.add(reservation);
     }
 
     public Room() {
@@ -103,4 +117,11 @@ public class Room implements Serializable {
         this.hotel = hotel;
     }
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 }

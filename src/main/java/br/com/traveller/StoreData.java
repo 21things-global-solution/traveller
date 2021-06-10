@@ -162,15 +162,11 @@ public class StoreData {
         address8.setHotel(hotel8);
         address9.setHotel(hotel9);
 
-        hotel1.addReservation(reservation1);
-        hotel2.addReservation(reservation1);
-        hotel3.addReservation(reservation4);
-        hotel4.addReservation(reservation3);
-        hotel5.addReservation(reservation4);
-        hotel6.addReservation(reservation5);
-        hotel7.addReservation(reservation5);
-        hotel8.addReservation(reservation3);
-        hotel9.addReservation(reservation2);
+        room1.addReservation(reservation1);
+        room2.addReservation(reservation3);
+        room3.addReservation(reservation2);
+        room6.addReservation(reservation4);
+        room14.addReservation(reservation5);
 
         customer1.addReservation(reservation1);
         customer2.addReservation(reservation5);

@@ -33,8 +33,8 @@ public class Reservation implements Serializable {
     private Customer customer;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cd_hotel", nullable = false)
-    private Hotel hotel;
+    @JoinColumn(name = "cd_quarto", nullable = false)
+    private Room room;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,8 +47,8 @@ public class Reservation implements Serializable {
 
     @Override
     public String toString() {
-        return "Reservation [checkIn=" + checkIn + ", checkOut=" + checkOut + ", customer=" + customer + ", hotel="
-                + hotel + ", id=" + id + "]";
+        return "Reservation [checkIn=" + checkIn + ", checkOut=" + checkOut + ", customer=" + customer + ", id=" + id
+                + ", room=" + room + "]";
     }
 
     public Reservation(Calendar checkIn, Calendar checkOut) {
@@ -59,10 +59,10 @@ public class Reservation implements Serializable {
     public Reservation() {
     }
 
-    public Reservation(Long id, Customer customer, Hotel hotel, Calendar checkIn, Calendar checkOut) {
+    public Reservation(Long id, Customer customer, Room room, Calendar checkIn, Calendar checkOut) {
         this.id = id;
         this.customer = customer;
-        this.hotel = hotel;
+        this.room = room;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
     }
@@ -83,14 +83,6 @@ public class Reservation implements Serializable {
         this.customer = customer;
     }
 
-    public Hotel getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
-    }
-
     public Calendar getCheckIn() {
         return checkIn;
     }
@@ -105,6 +97,14 @@ public class Reservation implements Serializable {
 
     public void setCheckOut(Calendar checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
 }

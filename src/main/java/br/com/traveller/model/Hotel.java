@@ -39,9 +39,6 @@ public class Hotel implements Serializable {
     private String site;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
-    private List<Reservation> reservations;
-
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     private List<Room> rooms;
 
     @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -56,14 +53,6 @@ public class Hotel implements Serializable {
         }
         this.rooms.add(room);
         room.setHotel(this);
-    }
-
-    public void addReservation(Reservation reservation) {
-        if (this.reservations == null) {
-            this.reservations = new ArrayList<>();
-        }
-        this.reservations.add(reservation);
-        reservation.setHotel(this);
     }
 
     @Override
@@ -135,14 +124,6 @@ public class Hotel implements Serializable {
 
     public void setSite(String site) {
         this.site = site;
-    }
-
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
     }
 
     public List<Room> getRooms() {
