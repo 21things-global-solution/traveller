@@ -21,6 +21,12 @@ import javax.persistence.Table;
 @SequenceGenerator(name = "zipCode", allocationSize = 1, sequenceName = "SQ_GS_CEP")
 public class ZipCode implements Serializable {
 
+    @Override
+    public String toString() {
+        return "ZipCode [city=" + city + ", district=" + district + ", id=" + id + ", name=" + name + ", number="
+                + number + ", state=" + state + "]";
+    }
+
     @Id
     @GeneratedValue(generator = "zipCode", strategy = GenerationType.SEQUENCE)
     @Column(name = "cd_cep")

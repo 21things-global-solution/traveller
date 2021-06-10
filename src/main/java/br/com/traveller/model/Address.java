@@ -40,8 +40,7 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "Address [complement=" + complement + ", hotel=" + hotel + ", id=" + id + ", number=" + number
-                + ", zipCode=" + zipCode + "]";
+        return "Address [complement=" + complement + ", id=" + id + ", number=" + number + ", zipCode=" + zipCode + "]";
     }
 
     public Address() {

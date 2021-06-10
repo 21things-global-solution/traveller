@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +44,7 @@ public class Hotel implements Serializable {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     private List<Room> rooms;
 
-    @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Address address;
 
     @Column(name = "in_classificacao")
@@ -68,7 +69,7 @@ public class Hotel implements Serializable {
     @Override
     public String toString() {
         return "Hotel [address=" + address + ", id=" + id + ", mail=" + mail + ", name=" + name + ", phone=" + phone
-                + ", rating=" + rating + ", reservations=" + reservations + ", rooms=" + rooms + ", site=" + site + "]";
+                + ", rating=" + rating + ", site=" + site + "]";
     }
 
     public Hotel(String name, String phone) {

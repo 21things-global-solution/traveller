@@ -69,8 +69,8 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", password=" + password + ", phones="
-                + phones + ", register=" + register + ", reservations=" + reservations + "]";
+        return "Customer [id=" + id + ", mail=" + mail + ", name=" + name + ", password=" + password + ", register="
+                + register + "]";
     }
 
     public Customer() {
