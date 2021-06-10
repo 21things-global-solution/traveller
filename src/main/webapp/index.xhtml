@@ -31,9 +31,9 @@
                   <div class="hotel-description">
                     #{hotel.address.zipCode.name}, #{hotel.address.number} -
                     #{hotel.address.zipCode.district}, #{hotel.address.zipCode.city} -
-                    #{hotel.address.zipCode.state.toString()}, #{hotel.address.zipCode.number}
+                    #{hotel.address.zipCode.state.toString()}, #{hotel.address.zipCode.number.replaceAll("^([0-9]{5})([0-9]{3})$","$1-$2")}
                   </div>
-                  <p:rating readonly="true" value="#{hotel.rating}" />
+                  <p:rating readonly="true" value="#{hotel.rating}" disabled="true" />
                 </div>
 
                 <div class="hotel-list-action">

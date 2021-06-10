@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import br.com.traveller.connection.ConnectionFactory;
 import br.com.traveller.dao.CustomerDao;
 import br.com.traveller.dao.impl.CustomerDaoImpl;
+import br.com.traveller.exception.TransactionException;
 import br.com.traveller.model.Customer;
 
 @Named
@@ -39,6 +40,21 @@ public class CustomerBean {
     public String logout() {
         context.getExternalContext().getSessionMap().remove("customer");
         return "login?faces-redirect=true";
+    }
+
+    public String register() {
+        dao.create(customer);
+        try {
+            dao.commit();
+        } catch (TransactionException e) {
+            e.printStackTrace();
+            context.addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Falha ao criar o usuário", e.getMessage()));
+            return "register?faces-redirect=true";
+        }
+        System.out.println(customer);
+        context.getExternalContext().getSessionMap().put("customer", customer);
+        return "index?faces-redirect=true";
     }
 
     public Customer getCustomer() {

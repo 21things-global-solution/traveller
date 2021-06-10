@@ -11,29 +11,72 @@
     <ui:define name="title">Registro</ui:define>
     <ui:define name="header" />
     <ui:define name="content">
+      <p:growl id="status" showDetail="true">
+        <p:autoUpdate />
+      </p:growl>
+
       <h:form>
         <div class="wrapper">
           <div class="ui-inputgroup input-group">
-            <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
-            <p:inputText placeholder="Nome" />
+            <span class="ui-inputgroup-addon">
+              <i class="pi pi-user"></i>
+            </span>
+            <p:inputText required="true" placeholder="Nome" value="#{customerBean.customer.name}" />
           </div>
           <div class="ui-inputgroup input-group">
-            <span class="ui-inputgroup-addon"><i class="pi pi-envelope"></i></span>
-            <p:inputText placeholder="Email" />
+            <span class="ui-inputgroup-addon">
+              <i class="pi pi-envelope"></i>
+            </span>
+            <p:inputText
+              type="email"
+              required="true"
+              placeholder="Email"
+              value="#{customerBean.customer.mail}"
+              requiredMessage="O Email é obrigatório"
+              validatorMessage="Email inválido"
+            >
+              <f:validateRegex pattern="^[A-z0-9_.]+@[A-z0-9]+\.[A-z]{2,}(\.[A-z]+)?$" />
+              <f:ajax event="blur" render="status" />
+            </p:inputText>
           </div>
           <div class="ui-inputgroup input-group">
-            <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
-            <p:password toggleMask="true" placeholder="Senha" />
+            <span class="ui-inputgroup-addon">
+              <i class="pi pi-lock"></i>
+            </span>
+            <p:password
+              id="pwd"
+              toggleMask="true"
+              placeholder="Senha"
+              match="pwdRepeat"
+              value="#{customerBean.customer.password}"
+              requiredMessage="Senha não informada"
+              validatorMessage="Senha inválida"
+            >
+              <f:validateLength minimum="6" />
+              <f:ajax event="blur" render="status" />
+            </p:password>
           </div>
           <div class="ui-inputgroup input-group">
-            <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
-            <p:password toggleMask="true" placeholder="Repetir Senha" />
+            <span class="ui-inputgroup-addon">
+              <i class="pi pi-lock"></i>
+            </span>
+            <p:password
+              id="pwdRepeat"
+              toggleMask="true"
+              placeholder="Repetir Senha"
+              value="#{customerBean.customer.password}"
+              requiredMessage="Senha não informada"
+              validatorMessage="Senha não coincide"
+            >
+              <f:ajax event="blur" render="status" />
+            </p:password>
           </div>
 
-          <p:commandButton type="button" value="Cadastrar" />
+          <p:commandButton update="status" value="Cadastrar" action="#{customerBean.register}" />
 
           <span class="account">
-            Já possui uma conta? <p:commandLink value="Faça o login aqui" action="login.xhtml" />
+            Já possui uma conta?
+            <p:commandLink value="Faça o login aqui" action="login.xhtml" immediate="true" />
           </span>
         </div>
       </h:form>
